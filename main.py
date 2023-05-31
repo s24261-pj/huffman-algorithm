@@ -1,10 +1,3 @@
-from huffman import huffman_compress, huffman_decompress
+from file import huffman_compress_file
 
-text = 'Ala ma kota a kot ma Ale'
-
-compressed_text = huffman_compress(text)
-print('Tekst przed kompresją:', text)
-print('Tekst po kompresji:', compressed_text)
-
-decompressed_text = huffman_decompress(text, compressed_text)
-print('Tekst po dekompresji:', decompressed_text)
+huffman_compress_file('files/text-before-compress.txt')

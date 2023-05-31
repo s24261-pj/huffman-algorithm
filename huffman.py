@@ -41,6 +41,15 @@ def build_tree(frequencies):
     return tree
 
 
+def get_generated_codes(text):
+    frequencies = calculate_frequencies(text)
+    tree = build_tree(frequencies)
+    codes = {}
+    generate_codes(tree, "", codes)
+
+    return codes
+
+
 def generate_codes(node, current_code, codes):
     if node.char:
         codes[node.char] = current_code
@@ -60,15 +69,13 @@ def compress_text(text, codes):
 
 
 def huffman_compress(text):
-    frequencies = calculate_frequencies(text)
-    tree = build_tree(frequencies)
-    codes = {}
-    generate_codes(tree, "", codes)
+    codes = get_generated_codes(text)
     compressed_text = compress_text(text, codes)
 
     return compressed_text
 
 
+# for tests to check the results of huffman_compress
 def huffman_decompress(text, compressed_text):
     frequencies = calculate_frequencies(text)
     tree = build_tree(frequencies)

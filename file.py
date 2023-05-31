@@ -15,9 +15,9 @@ def huffman_compress_file(file_path):
             os.remove(compressed_file_path)
 
         with open("files/text-after-compress.txt", "w") as compressed_file:
-            compressed_file.write(compressed_text)
-            compressed_file.write('\n')
             compressed_file.write(str(codes))
+            compressed_file.write('\n')
+            compressed_file.write(compressed_text)
 
     except IOError as error:
         print(f"File read/write error: {error}")
